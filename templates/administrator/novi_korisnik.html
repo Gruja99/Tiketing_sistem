@@ -1,0 +1,87 @@
+{% extends 'index.html' %} {% block body%}
+
+<div class="container-fluid ">
+    <div class="d-flex">
+        <div class="row margin-top: 10px p-2">
+            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
+                <div class="sidebar-sticky pt-3">
+                    <ul class="nav flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>                                Zahtev <span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>                                Korisnik
+                            </a>
+                        </li>
+
+                    </ul>
+
+
+                </div>
+            </nav>
+        </div>
+
+
+        <div class="row justify-content-center p-2">
+
+
+
+
+
+
+            <div class="my-5">
+                <h3>Novi korisnik</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="ime">Ime</label>
+                        <input type="text" class="form-control" id="Ime" name="ime">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Prezime">Prezime</label>
+                        <input type="text" class="form-control" id="Prezime" name="prezime">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Kompanija">Kompanija</label>
+                        <input type="text" class="form-control" id="password" name="kompanija">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="rola">Rola</label>
+                        <input type="text" class="form-control" id="password" name="rola">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zahtev">email</label>
+                        <input type="email" class="form-control" id="password" name="email">
+
+                    </div>
+                    <div class="form-group">
+                        <label for="Username">Username</label>
+                        <input type="text" class="form-control" id="password" name="username">
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lozinka">Password</label>
+                        <input type="password" class="form-control" id="password" name="password">
+
+                    </div>
+
+
+                    <button type="submit" class="btn btn-primary">Snimi</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+{% endblock%}
