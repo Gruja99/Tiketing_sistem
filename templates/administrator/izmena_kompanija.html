@@ -1,84 +1,93 @@
 {% extends 'index.html' %} {% block body%}
+<div id="wrapper">
 
-<div class="container-fluid ">
-    <div class="d-flex">
-        <div class="row margin-top: 10px p-2">
-            <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block sidebar collapse">
-                <div class="sidebar-sticky pt-3">
-                    <ul class="nav flex-column">
-                        <li class="nav-item">
-                            <a class="nav-link active" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-home"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>                                Nalog <span class="sr-only">(current)</span>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>                                Zahtevi
-                            </a>
-                        </li>
-
-                    </ul>
+    {% include 'pretraga.html' %}
+    <div id="content-wrapper" class="d-flex flex-column">
 
 
-                </div>
-            </nav>
-        </div>
+        <div id="content">
 
 
-        <div class="row justify-content-center p-2">
+            <nav class="navbar  navbar-light bg-white topbar mb-4 static-top shadow">
 
 
+                <form class="form-inline">
 
-
-
-
-            <div class="my-5">
-                <h3>Izmena kompanije</h3>
-                <form>
-                    <div class="form-group">
-                        <label for="kompanija">Naziv kompanije</label>
-                        <input type="text" class="form-control" id="Ime" name="kompanija">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="ime">Ime i prezime administratora</label>
-                        <input type="text" class="form-control" id="Prezime" name="ime">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="email">Email</label>
-                        <input type="email" class="form-control" id="email" name="email">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="adresa">Adresa</label>
-                        <input type="text" class="form-control" id="password" name="adresa">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="Broj telefona">Broj telefona</label>
-                        <input type="text" class="form-control" id="password" name="telefon">
-
-                    </div>
-
-                    <div class="form-group">
-                        <label for="Username">Username</label>
-                        <input type="text" class="form-control" id="password" name="usernabe">
-
-                    </div>
-                    <div class="form-group">
-                        <label for="lozinka">Password</label>
-                        <input type="password" class="form-control" id="password" name="zaposleni">
-
-                    </div>
-                    <button type="submit" class="btn btn-primary">Snimi</button>
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
                 </form>
+
+
+
+
+
+                <a class="btn btn-primary col-xs-3" href="{{url_for('logout')}}">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Odjavi se</span></a>
+
+
+            </nav>
+
+            <div class="container-fluid">
+
+
+                <div class="p-5 " style="width: 500px;">
+                    <div class="">
+                        <h1 class="h4 text-gray-900 mb-4">Izmena kompanije</h1>
+                    </div>
+                    <form action={{ url_for( 'a_kompanija_izmena', id=kompanija.id, korisnik=kompanija.korisnici.id ) }} method="POST">
+                        <div class="form-group">
+                            <label for="kompanija">Naziv kompanije</label>
+                            <input type="text" class="form-control" value="{{kompanija.naziv}}" name="naziv">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="ime">Ime  administratora</label>
+                            <input type="text" class="form-control" value={{kompanija.korisnici.ime}} name="ime">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="ime">Prezime  administratora</label>
+                            <input type="text" class="form-control" value={{kompanija.korisnici.prezime}} name="prezime">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" value="{{kompanija.korisnici.email}}" name="email">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="adresa">Adresa</label>
+                            <input type="text" class="form-control" value="{{kompanija.adresa}}" name="adresa">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="Broj telefona">Broj telefona</label>
+                            <input type="text" class="form-control" value="{{kompanija.telefon}}" name="telefon">
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Username">Username</label>
+                            <input type="text" class="form-control" value="{{kompanija.korisnici.username}}" name="username">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="lozinka">Password</label>
+                            <input type="password" class="form-control" value="{{kompanija.korisnici.password}}" name="password" readonly="readonly">
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Snimi</button>
+                    </form>
+                </div>
+
+
             </div>
 
+
         </div>
+
     </div>
-
-
 </div>
-
 {% endblock%}

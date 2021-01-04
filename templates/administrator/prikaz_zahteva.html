@@ -1,0 +1,124 @@
+{% extends 'index.html' %} {% block body%}
+<div id="wrapper">
+
+    {% include 'pretraga.html' %}
+    <div id="content-wrapper" class="d-flex flex-column">
+
+
+        <div id="content">
+
+
+            <nav class="navbar  navbar-light bg-white topbar mb-4 static-top shadow">
+
+
+                <form class="form-inline">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+                </form>
+
+
+
+
+
+                <a class="btn btn-primary col-xs-3" href="{{url_for('logout')}}">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Odjavi se</span></a>
+
+
+            </nav>
+
+            <div class="container-fluid">
+
+
+                <div class="p-5 " style="width: 500px;">
+                    <div class="">
+                        <h1 class="h4 text-gray-900 mb-4">Prikaz zahteva</h1>
+                    </div>
+                    <form action={{ url_for( 'a_zahtev_prikaz', id=zahtev.id ) }} method="POST">
+
+                        <div class="form-group">
+                            <label for="Br. zahteva">Br. zahteva</label>
+                            <input type="text" class="form-control" id="Ime" name="id" value="{{zahtev.br_zahteva}}" disabled>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="Datum">Datum</label>
+                            <input type="text" class="form-control" id="Prezime" name="datum" value="{{zahtev.datum}}" disabled>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Kompanija">Kompanija</label>
+                            <input type="text" class="form-control" name="kompanija" value="{{zahtev.kompanija}}" disabled>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="lozinka">Ime i prezime podnosioca</label>
+                            <input type="text" class="form-control" id="password" name="ime_podnosioca" value="{{zahtev.ime_podnosioca}}" disabled>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="zahtev">Zahtev</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" value="{{zahtev.zahtev}}" disabled>{{zahtev.zahtev}}</textarea>
+
+                        </div>
+
+                        <h2>Izveštaj o realizaciji zahteva</h2>
+
+
+                        <div class="form-group">
+                            <label for="napomena">Napomena</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="2" name="napomena">{{zahtev.napomena}}</textarea>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tip_zahteva">Tip_zahteva</label>
+                            <select name="tip_zahteva" class="selectpicker form-control">
+                                  {% for tip in tipovi %}
+                                  <option value="{{ tip.naziv }}">{{ tip.naziv }}</option>
+                                  {% endfor %}
+                                </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="Ocekivani datum">Ocekivani datum</label>
+                            <input type="date" class="form-control" value="{{zahtev.ocekivani_datum}}" name="ocekivani_datum">
+
+                        </div>
+                        <div class="form-group">
+                            <label for="Status">Status</label>
+                            <select name="status" class="selectpicker form-control">
+                                {% for status in statusi %}
+                                <option value="{{ status.naziv_statusa }}">{{ status.naziv_statusa }}</option>
+                                {% endfor %}
+                              </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label for="Komentar">Komentar</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="komentar">{{zahtev.komentar}}</textarea>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="Utroseno sati">Utroseno sati</label>
+                            <input type="text" class="form-control" id="password" name="br_sati" value="{{zahtev.br_sati}}">
+
+                        </div>
+                        <button type="submit" class="btn btn-primary">Sacuvaj</button>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock%}
